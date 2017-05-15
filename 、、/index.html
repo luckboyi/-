@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+	<style type="text/css">
+	.btn{height:50px;}
+		.btn li {float: left; width:100px ; height:24px; line-height:24px;}
+		.btn_left,.btn_right{ width:100px; height:24px; line-height:24px;}
+		.highlight_tip span{ display:none;}
+		.highlight_tip span.cur{display:block;}
+	</style>
+    <body>
+
+		<ul class="btn">
+			<li class="back">后退</li>
+			<li class="forword">前进</li>
+		</ul>
+		<div class="btn_left">按钮一</div>
+		<div class="btn_right">按钮二</div>
+		<div class="highlight_tip">
+			<span class="cur">内容一</span>
+			<span>内容二</span>
+		</div>
+
+
+    </body>
+</html>
+
+
+	<script>
+	$(function(){
+		$('.btn_left').on('click',function(){
+			$('.highlight_tip span').eq(0).addClass('cur').siblings().removeClass('cur');
+		})
+		$('.btn_right').on('click',function(){
+			$('.highlight_tip span').eq(1).addClass('cur').siblings().removeClass('cur');
+		})
+	})
+
+
+var Controller_Toolbar = function () {  
+    var self = this,  
+        _isFirstPage = null,  
+        _isLastPage = null,  
+        _initSwitchPageEvent = null,  
+        _forword = null,  
+        _goback = null,  
+        _setCount = null,  
+        _init = null;  
+      
+    /** 
+     * 工具栏事件(前进、后退) 
+     * 思路：在cookie中存储Integer型变量以确定用户当前浏览的页面位置 
+     * cur_news_page    :   当前页下标 
+     */  
+    _initSwitchPageEvent = function () {  
+        $('.back').on('click', function () {  
+            if (!_isFirstPage()) {  
+                _goback();  
+            }  
+        });  
+        $('.forword').on('click', function () {  
+            if (!_isLastPage()) {  
+                _forword();  
+            }  
+        });  
+          
+        $('.btn_left').click(function () {  
+            _setCount();  
+        });  
+        $('.btn_right').click(function () {  
+            _setCount();  
+        });  
+        $('.highlight_tip > span').click(function () {  
+            if (!$(this).hasClass('current')) {  
+                _setCount();  
+            }  
+        });  
+          
+          
+        // 初始样式  
+        if (!_isFirstPage()) {  
+            $('.back_disabled').removeClass('back_disabled').addClass('back');  
+        }   
+        if (!_isLastPage()) {  
+            $('.forword_disabled').removeClass('forword_disabled').addClass('forword');  
+        }  
+    };  
+      
+    /** 
+     * 计数变量的赋值 
+     */  
+    _setCount = function () {  
+        var totalPage = history.length || 1;  
+        Util.Cookies.set('cur_news_page', (parseInt(totalPage) + 1));  
+          
+    };  
+      
+    /** 
+     * 是否为第一页 
+     * @returns {Boolean} 
+     */  
+    _isFirstPage = function () {  
+        var curPage = Util.Cookies.get('cur_news_page'),  
+        curPage = curPage || 1;  
+        if (curPage == 1) {  
+            return true;  
+        }  
+        return false;  
+    };  
+      
+    /** 
+     * 是否为最后一页 
+     * @returns {Boolean} 
+     */  
+    _isLastPage = function () {  
+        var curPage = Util.Cookies.get('cur_news_page');  
+        curPage = curPage || 1;  
+        var totalPage = history.length || 1;  
+        if (curPage == totalPage) {  
+            return true;  
+        }  
+        return false;  
+          
+    };  
+      
+    /** 
+     * 前进 
+     */  
+    _forword = function () {  
+        var curPage = Util.Cookies.get('cur_news_page');  
+        Util.Cookies.set('cur_news_page', (parseInt(curPage) + 1));  
+        history.go(+1);  
+          
+    };  
+      
+    /** 
+     * 后退 
+     */  
+    _goback = function () {  
+        var curPage = Util.Cookies.get('cur_news_page');  
+        Util.Cookies.set('cur_news_page', (parseInt(curPage) - 1));  
+        history.go(-1);  
+    };  
+      
+    _init = function () {  
+        _initSwitchPageEvent();  
+    };  
+      
+    _init();  
+};  
+	</script>

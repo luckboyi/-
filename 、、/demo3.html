@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://www.hubwiz.com/scripts/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myCtrl2">
+        <!--<input type="text" ng-model="name">
+        <input type="text" ng-model="years">-->
+        <p ng-repeat="cur in list" ng-bind="'姓名是：'+cur.name+'年龄是：'+cur.years"></p>
+    </div>
+    <div ng-controller="myCtrl">
+        <p ng-repeat="cur in list" ng-bind="'姓名是：'+cur.name+'年龄是：'+cur.years"></p>
+    </div>
+</body>
+</html>
+
+<script>
+
+
+   /* function myTest(data){
+        var app = angular.module('myApp',[])
+        app.controller('myCtrl2',function($scope){
+            $scope.list = data;
+        })
+    }
+    myTest([
+        {name:'test1',years:'25'},
+        {name:'test2',years:'26'},
+        {name:'test3',years:'27'}
+    ])*/
+
+    function MainFn(){
+        function myTest(data){
+            var app = angular.module('myApp',[])
+            app.controller('myCtrl2',function($scope){
+                $scope.list = data;
+            })
+        }
+        function interface( module,fn,data){
+            switch (module){
+                case 'test1':
+                        switch (fn){
+                            case 't1':
+                                myTest(data);
+                                break;
+                        }
+                    break;
+            }
+        }
+        return {interface:interface}
+    }
+
+
+    var mainFn = new MainFn();
+    mainFn.interface('test1','t1',[
+        {name:'test1',years:'25'},
+        {name:'test2',years:'26'},
+        {name:'test3',years:'27'}
+    ])
+
+
+</script>
