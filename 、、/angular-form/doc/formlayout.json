@@ -1,0 +1,157 @@
+{
+    "code": 0,
+    "message": "获取数据成功",
+    "data": {
+        "username": {
+            "labeltext" : "用户名字",
+            "attr" : {
+                "type": "text",
+                "required": true,
+                "name": "username",
+                "maxlength": "10",
+                "minlength": "5",
+                "value": "用户名字",
+                "class" : "form-control",
+                "placeholder": "用户名字"
+            }
+        },
+         "address": {
+            "labeltext" : "用户地址",
+            "attr" : {
+                "type": "text",
+                "required": true,
+                "name": "address",
+                "value": "北京海淀",
+                "class" : "form-control",
+                "placeholder": "用户地址"
+            }
+        },
+        "telphone" : {
+            "labeltext" : "电话号码",
+            "attr" : {
+                "type": "tel",
+                "required": true,
+                "name": "telphone",
+                "value" : "12345678909",
+                "class" : "form-control"
+            }
+        },
+        "sex": {
+            "labeltext" : "性别",
+            "attr" : {
+                "type": "radio",
+                "required": true,
+                "name": "sex",
+                "option": {
+                    "1" : "男 ",
+                    "2" : "女"
+                }
+            }
+        },
+        "love": {
+            "labeltext" : "爱好",
+            "attr" : {
+                "type": "checkbox",
+                "required": true,
+                "name": "love",
+                "option": {
+                    "1" : "篮球",
+                    "2" : "足球",
+                    "3" : "排球",
+                    "4" : "羽毛球"
+                }
+            }
+        },
+        "email": {
+            "labeltext" : "邮箱",
+            "attr" : {
+                "type": "email",
+                "required": true,
+                "name": "email",
+                "value" : "anziguoer@sina.com",
+                "class" : "form-control",
+                "placeholder": "邮箱"
+            }
+        },
+        "url": {
+            "labeltext" : "博客地址",
+            "attr" : {
+                "type": "url",
+                "name": "url",
+                "required": true,
+                "value" : "http://www.hxsd.com",
+                "class" : "form-control",
+                "placeholder": "请输入您的个人网址"
+            }
+        },
+        "age": {
+            "labeltext" : "年龄",
+            "attr" : {
+                "type": "number",
+                "required": true,
+                "name": "age",
+                "max": "120",
+                "min": "20",
+                "value" : 28,
+                "class" : "form-control",
+                "placeholder": "年龄"
+            }
+        },
+        "range": {
+            "labeltext" : "范围",
+            "attr" : {
+                "type": "range",
+                "name": "range",
+                "required": true,
+                "value": "9",
+                "step": "2",
+                "placeholder": "输入年龄范围"
+            }
+        },
+        "date": {
+            "labeltext" : "出生日期",
+            "attr" : {
+                "type": "date",
+                "required": true,
+                "name": "time",
+                "class" : "form-control",
+                "value": "2016/02/03"
+            }
+        },
+        "search": {
+            "labeltext" : "站内搜索",
+            "attr" : {
+                "type": "search",
+                "name": "keyworld",
+                "required": true,
+                "value" : "站内搜索",
+                "class" : "form-control",
+                "placeholder": "输入要查找的内容"
+            }
+        },
+        "class" : {
+            "labeltext" : "校区选择",
+            "attr" : {
+                "type": "select",
+                "name": "class",
+                "required": true,
+                "class" : "form-control",
+                "placeholder": "校区",
+                "option" : {
+                    "1" : "北京校区",
+                    "2" : "上海校区",
+                    "3" : "武汉校区"
+                }
+            }
+        },
+        "textarea" : {
+            "labeltext" : "用户留言",
+            "attr" : {
+              "type" : "textarea",
+              "require" : true,
+              "class" : "form-control",
+              "value" : "我留言了. 你记得回复哦"
+            }
+        }
+    }
+}

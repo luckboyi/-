@@ -1,0 +1,11 @@
+<div class="form-group">
+    <label class="control-label" ng-show="{{pickerConfig.showtimetext}}">时间：</label>
+    <p class="input-group" >
+        <input type="text" class="form-control" uib-datepicker-popup="{{datepicker.format}}" ng-model="datepicker.dt" is-open="pickerConfig.status.opened" min-date="pickerConfig.minDate" max-date="pickerConfig.maxDate" datepicker-options="pickerConfig.dateOptions" show-weeks="pickerConfig.show.weeks" date-disabled="pickerConfig.disabled(date, mode)" ng-required="true" close-text="{{pickerConfig.closeText}}" current-text="{{pickerConfig.currentText}}" clear-text="{{pickerConfig.clearText}}" />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="pickerConfig.open($event)">
+                <i class="glyphicon glyphicon-calendar"></i>
+            </button>
+        </span>
+    </p>
+<div>
