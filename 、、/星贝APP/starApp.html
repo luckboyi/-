@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+        <title>明星妈妈精致育儿客户端</title>
+        <meta name="description" content="明星妈妈精致育儿,星贝网App">
+        <link rel="stylesheet" type="text/css" href="css/starApp.css">
+        <script type="text/javascript">
+	        window.onload = function(){
+	        	// 获取html标签
+	        	var oHtml = document.documentElement;
+	        	 getSize();
+	        	function getSize(){
+	        		// 获取屏幕的宽度
+	        		var screenWidth = oHtml.clientWidth;
+		    		if(screenWidth <= 320){
+		    			oHtml.style.fontSize = '20px';
+		    		}else if(screenWidth >= 640){
+		    			oHtml.style.fontSize = '40px';
+		    		}else{
+		    			oHtml.style.fontSize = screenWidth/16+'px';
+		    		}
+	        	}
+	        	// 当窗口发生改变的时候调用
+	        	window.onresize = function(){
+	        		getSize();
+	        	}
+	        }
+        </script>
+    </head>
+    <body>
+    	<div class="header">
+    		<div class="inheader clearfix">
+	    		<h1>星贝APP</h1>
+	    		<p>明星妈妈精致育儿客户端</p>
+    		</div>
+    	</div>
+    	<div class="main" id="main">
+    		<img src="images/bg2.jpg"  alt="">
+    	</div>
+    	<script>
+    	</script>
+    </body>
+</html>
