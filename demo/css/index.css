@@ -1,0 +1,78 @@
+/* 
+* @Author: zero.wu
+* @Date:   2016-01-07 13:57:04
+* @Last Modified by:   zero.wu
+* @Last Modified time: 2016-01-11 11:23:36
+*/
+*{margin:0;padding: 0;}
+/*body{
+	background: #E4E4E4;
+}*/
+/*导航样式开始*/
+.new{
+	width:1200px;
+	height: 80px;
+	background-color: #FFF;
+	position: fixed;
+	top: 0px;
+	left:50%;
+	margin-left: -600px;
+	z-index: 100;
+}
+.new h1{
+	width:219px;
+	height:42px;
+	background: url(../img/tna-tnm-logo-top.png);
+	text-indent: -999px;
+	margin:15px 25px;
+	float:left;
+	cursor: pointer;
+}
+.new a{
+	float:left;
+	width:140px;
+	height:30px;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Univers57,arial,helvetica,sans-serif;
+	font-size: 22px;
+	margin: 30px 0px 0px 0px;
+	text-decoration: none;
+	color:blue;
+	font-weight: bold;
+	border-left: blue solid 1px;
+	text-align: center;
+	line-height: 30px;
+}
+.new .serve{
+	border-left: none;
+}
+.new input{
+	background-color: #E4E4E4;
+	border: medium none;
+	width: 190px;
+	height: 80px;
+	text-indent: 11px;
+	font-size: 16px;
+	color: #8A8A8A;
+	float:right;
+}
+.new .font{
+	width:80px;
+	height:80px;
+	float:right;
+	color: #fff;
+	font-family: Univers57,Arial,Helvetica,sans-serif;
+	font-size: 25px;
+	font-weight: lighter;
+	line-height: 79px;
+	text-indent: 10px;
+	background: #000;
+}
+.new .font img{
+	margin:0px 5px 2px 0px;
+}
+.new input{
+	
+}
+/*导航样式结束*/
