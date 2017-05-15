@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<mate lang>
+<style> 
+div
+{
+width:100px;
+height:100px;
+background:red;
+position:relative;
+
+}
+@keyframes myfirst{
+	0%{opacity:0;}
+	
+	100%{opacity:1;}
+}
+@-moz-keyframes myfirst{
+	0%{opacity:0;}
+	
+	100%{opacity:1;}
+}
+@-o-keyframes myfirst{
+	0%{opacity:0;}
+	
+	100%{opacity:1;}
+}
+@-webkit-keyframes myfirst{
+	0%{opacity:0;}
+	
+	100%{opacity:1;}
+}
+div:hover p{
+	display:block;
+}
+p{
+	display:none;
+	width:120px;
+	height:120px;
+	border:3px solid #000;
+	animation:myfirst 30s;
+-moz-animation:myfirst 30s; /* Firefox */
+-webkit-animation:myfirst 30s; /* Safari and Chrome */
+-o-animation:myfirst 30s; /* Opera */
+}
+/* @keyframes myfirst */
+/* { */
+/* 0%   {background:red; left:0px; top:0px;} */
+/* 25%  {background:yellow; left:200px; top:0px;} */
+/* 50%  {background:blue; left:200px; top:200px;} */
+/* 75%  {background:green; left:0px; top:200px;} */
+/* 100% {background:red; left:0px; top:0px;} */
+/* } */
+
+/* @-moz-keyframes myfirst Firefox */
+/* { */
+/* 0%   {background:red; left:0px; top:0px;} */
+/* 25%  {background:yellow; left:200px; top:0px;} */
+/* 50%  {background:blue; left:200px; top:200px;} */
+/* 75%  {background:green; left:0px; top:200px;} */
+/* 100% {background:red; left:0px; top:0px;} */
+/* } */
+
+/* @-webkit-keyframes myfirst Safari and Chrom */e */
+/* { */
+/* 0%   {background:red; left:0px; top:0px;} */
+/* 25%  {background:yellow; left:200px; top:0px;} */
+/* 50%  {background:blue; left:200px; top:200px;} */
+/* 75%  {background:green; left:0px; top:200px;} */
+/* 100% {background:red; left:0px; top:0px;} */
+/* } */
+
+/* @-o-keyframes myfirst Opera */
+/* { */
+/* 0%   {background:red; left:0px; top:0px;} */
+/* 25%  {background:yellow; left:200px; top:0px;} */
+/* 50%  {background:blue; left:200px; top:200px;} */
+/* 75%  {background:green; left:0px; top:200px;} */
+/* 100% {background:red; left:0px; top:0px;} */
+/* } */
+</style>
+</head>
+<body>
+
+<p><b>注释：</b>本例在 Internet Explorer 中无效。</p>
+
+<div>
+	<p></p>
+</div>
+
+</body>
+</html>

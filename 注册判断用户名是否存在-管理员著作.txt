@@ -1,0 +1,155 @@
+	// 申明全局变量name
+    var nameFalg = 0;
+
+	//点击注册提交提示注册成功
+    $("#startRegister").click( function () { 
+
+        // 判断用户名是否合法
+        var name = $("#name").val();
+
+        if (nameFalg == -3) {
+            return;
+        };
+
+        var flag = blurName(name);
+        if (flag < 1) {  // 如果小于1，则说明返回的是错误代码
+            return;
+        };
+
+        // 判断密码和确认密码是否为空
+        var pwd = $("#pwd").val();
+        var confirPwd = $("#confirPwd").val();
+        if (pwd.length == 0) {
+            $("#pwd").siblings(".erro_msg").show().find('b').html("密码不能为空");
+            return;
+        }else{
+            $("#pwd").siblings(".erro_msg").show().find('b').html('');
+            $("#pwd").siblings(".erro_msg").hide();
+        }
+
+        if (pwd.length < 6) {
+            $("#pwd").siblings(".erro_msg").show().find('b').html("密码长度不够");
+            return;
+        }else{
+            $("#pwd").siblings(".erro_msg").show().find('b').html('');
+            $("#pwd").siblings(".erro_msg").hide();
+        }
+
+        if (confirPwd.length == 0) {
+            $("#confirPwd").siblings(".erro_msg").show().find('b').html("确认密码不能为空");
+            return;
+        }else{
+            $("#confirPwd").siblings(".erro_msg").show().find('b').html('');
+            $("#confirPwd").siblings(".erro_msg").hide();
+        }
+
+        if (confirPwd.length < 6) {
+            $("#confirPwd").siblings(".erro_msg").show().find('b').html("确认密码长度不够");
+            return;
+        }else{
+            $("#confirPwd").siblings(".erro_msg").show().find('b').html('');
+            $("#confirPwd").siblings(".erro_msg").hide();
+        }
+
+        // 判断两次密码是否一致
+        if (pwd != confirPwd) {
+            $("#confirPwd").siblings(".erro_msg").show().find('b').html("两次密码不一致");
+            return;
+        }else{
+            $("#confirPwd").siblings(".erro_msg").show().find('b').html('');
+            $("#confirPwd").siblings(".erro_msg").hide();
+        }
+
+        $.ajax({
+            url:'/xxx/xxx',
+            type:'GET',
+            dataType:'json',
+            data:{xxxx:xxx,xxx:xxx},
+            headers: {  // header属性，是为了避免跨站伪造请求攻击写的
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            },
+            success:function(data){
+                if(data.status == 1){
+                    $("#startRegister").parents('.register_con').hide().siblings('.suc_register').show();
+                    countdownFn();
+                }else{
+                    alert(data.msg)
+                }
+            }
+        })
+    });
+	
+	
+	// 用户名离开按钮事件
+    $("#name").blur( function () {        
+
+        var name = $("#name").val();
+        var flag = blurName(name);
+        if (flag < 1) {
+            return;
+        }else{
+            $("#name").siblings(".erro_msg").show().find('b').html('');
+            $("#name").siblings(".erro_msg").hide();
+        }
+    });
+
+	// 判断用户名是否存在公共函数
+    function blurName(name){
+
+        if (name.length == 0) {
+            $("#name").siblings(".erro_msg").show().find('b').html("用户名不能为空");
+            nameFalg = -1;
+        }else{
+            // 判断用户名是否可用
+            var rs=/^[a-zA-Z\u4E00-\u9FA50-9][a-zA-Z\u4E00-\u9FA50-9_]*$/;  
+            if (!rs.test(name)) {
+               $("#name").siblings(".erro_msg").show().find('b').html("只允许中英文、数字、下划线，且不能以下划线开头");
+                nameFalg = -2;
+            }else{
+
+                $.ajax({
+                url:'/xxx/xxxx',
+                async:false,
+                type:'GET', 
+                contentType: "application/json; charset=utf-8",
+                dataType:'json',
+                data:{xxx:xxx},
+                headers: {  // header属性，是为了避免跨站伪造请求攻击写的
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                },
+                success:function(data){
+                    if(data.status == 0){
+                        $("#name").siblings(".erro_msg").show().find('b').html("用户名已被注册");
+                        nameFalg = -3;
+                    }else{
+                        $("#name").siblings(".erro_msg").show().find('b').html('');
+                        $("#name").siblings(".erro_msg").hide();
+                        nameFalg = 1;
+                    }
+                }
+            })
+            }      
+        }
+
+        return nameFalg;
+    }
+	
+	//注册成功倒计时
+    function countdownFn(){
+        var countdownnum = 5;
+        function countdown(){
+            if(countdownnum == 0){
+                window.location.href = '/xxx/xxx';
+            }else{
+                countdownnum--;
+                $('.suc_register').find('b').text(countdownnum);
+            }
+        }
+        setInterval(function(){
+            countdown();
+        },1000);
+        //点击立即登录
+        $('.suc_register').on('click','.login_immediately',function(){
+            window.location.href = '/xxx/xxx';
+        })
+    }

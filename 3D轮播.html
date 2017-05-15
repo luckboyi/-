@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+
+*{margin:0;padding:0;list-style:none;}
+body{ background:pink;}
+#ul1{ position:relative;width:480px; height:260px;  margin:100px auto;}
+#ul1 li{ opacity:0; position:absolute;left:0;top:0;width:100%; height:100%;transform: translateX(0px) rotateY(0deg);transition:1s all ease;}
+#ul1 li>div{width:100%; height:100%;}
+#ul1 li.l2{ opacity:0; z-index:1; transform: perspective(800px) translateX(-300px) rotateY(45deg);}
+#ul1 li.l1{ opacity:1; z-index:1; transform: perspective(800px) translateX(-200px) rotateY(45deg);}
+#ul1 li.cur{ opacity:1; z-index:5;}
+#ul1 li.r1{ opacity:1; z-index:1;transform:perspective(800px) translateX(200px) rotateY(-45deg);}
+#ul1 li.r2{ opacity:0; z-index:1;transform:perspective(800px) translateX(300px) rotateY(-45deg);}
+
+</style>
+<script>
+window.onload = function(){
+	var oPrev = document.getElementById("prev");
+	var oNext = document.getElementById("next");
+	var oUl   = document.getElementById("ul1");
+	var aLi   = oUl.children;
+	var len   = aLi.length;
+	
+	var bReady = true;
+	
+	var aClass = [];
+	for(var i = 0; i < len; i++){
+		aClass.push(aLi[i].className);
+	}
+	
+	
+	oPrev.onclick = function(){ 
+		if(!bReady)return;
+		
+		bReady = false;
+	
+		aClass.push(aClass.shift()); 
+		
+		tab();
+		
+	};
+	
+	function tab(){
+		for(var i = 0; i < len; i++){
+			aLi[i].className = aClass[i];
+		}
+		
+		var oCur = document.querySelector(".cur");
+		oCur.addEventListener("transitionend",function(){
+			bReady = true;
+		},false);
+	}
+	
+	oNext.onclick = function(){ 
+		if(!bReady)return;
+		
+		bReady = false;
+	
+		aClass.unshift(aClass.pop());
+		
+		tab();
+	};
+	
+ 
+};
+
+</script>
+
+
+</head>
+
+<body>
+
+<input id="prev" type="button" value="上一张" />
+<input id="next" type="button" value="下一张" />
+<ul id="ul1">
+	<li class="l2"><div style='background:#9c9;'>1</div></li>
+	<li class="l1"><div style='background:#9d6;'>2</div></li>
+	<li class="cur"><div style='background:#6d9;'>3</div></li>
+	<li class="r1"><div style='background:#9a9;'>4</div></li>
+	<li class="r2"><div style='background:#969;'>5</div></li>
+	<li><div style='background:#9c3;'>7</div></li>
+	<li><div style='background:#93c;'>7</div></li>
+</ul>
+</body>
+</html>

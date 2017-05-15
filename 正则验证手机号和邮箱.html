@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+        <script type="text/javascript">
+        	$(function() {
+        		//验证手机号
+        		$('.number1').blur(function(event) {
+        			var phone=$('.number1').val();
+        			//正则表达式
+	        		var reg=/(1[3-9]\d{9}$)/;
+	        		if(!reg.test(phone)){
+	        			alert('请输入正确手机号格式')
+	        		}else{
+	        			alert('合法号码');
+	        		}
+        		});
+
+
+        		//验证邮箱
+        		$('.number2').blur(function(event) {
+        			var youxiang=$('.number2').val();
+        			//正则表达式
+        			var reg=/\w+[@]\w+[.]\w+/;
+        			if(!reg.test(youxiang)){
+        				alert('请输入正确邮箱格式');
+        			}else{
+        				alert('合法邮箱');
+        			}
+        		});
+        		
+        	});
+        </script>
+    </head>
+    <body>
+    	手机号：<input class="number1" maxlength="11" />
+    	邮　箱: <input class="number2" type="text" maxlength="11" />
+    </body>
+</html>
